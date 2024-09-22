@@ -1,0 +1,184 @@
+<div class="container,center">
+  <nav class="navbar navbar-dark bg-dark ,center">
+    <a class="navbar-brand align-content-center" href="#">Student Management System</a>
+  </nav>
+</div>
+<div class="container">
+<!--  <h2 class="text-center my-4">Student Management</h2>-->
+
+  <!-- Form -->
+  <form (ngSubmit)="saveStudent()" class="row g-3">
+
+
+    <div class="col-md-12">
+      <label for="Id" class="form-label">ID</label>
+      <input
+        type="number"
+        class="form-control"
+        id="Id"
+        [(ngModel)]="newStudent.id"
+        name="studentId"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="studentId" class="form-label">Student ID</label>
+      <input
+        type="text"
+        class="form-control"
+        id="studentId"
+        [(ngModel)]="newStudent.studentId"
+        name="studentId"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="studentName" class="form-label">Student Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="studentName"
+        [(ngModel)]="newStudent.studentName"
+        name="studentName"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="fatherName" class="form-label">Father Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="fatherName"
+        [(ngModel)]="newStudent.fatherName"
+        name="fatherName"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="gender" class="form-label">Gender</label>
+      <input
+        type="text"
+        class="form-control"
+        id="gender"
+        [(ngModel)]="newStudent.gender"
+        name="gender"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="mobile" class="form-label">Mobile Number</label>
+      <input
+        type="text"
+        class="form-control"
+        id="mobile"
+        [(ngModel)]="newStudent.mobile"
+        name="mobile"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="educationalQu" class="form-label">Educational Qualification</label>
+      <input
+        type="text"
+        class="form-control"
+        id="educationalQu"
+        [(ngModel)]="newStudent.educationalQu"
+        name="educationalQu"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="religion" class="form-label">Religion</label>
+      <input
+        type="text"
+        class="form-control"
+        id="religion"
+        [(ngModel)]="newStudent.religion"
+        name="Religion"
+        required
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        [(ngModel)]="newStudent.age"
+        name="age"
+        required
+      />
+    </div>
+    <!-- Save Student List -->
+    <div class="col-md-6 text-center">
+      <button type="submit" class="btn btn-primary" (click)="saveStudent()">
+        Add Student
+      </button>
+    </div>
+    <!-- Update Student List -->
+    <div class="col-md-6 text-center">
+      <button type="submit" class="btn btn-primary" (click)="updateStudent()">
+        Update Student
+      </button>
+    </div>
+<!--    <div class="col-md-6 text-center">
+      <button type="submit" class="btn btn-primary">
+        {{ editMode ? 'Update Student' : 'Add Student' }}
+      </button>
+    </div>-->
+  </form>
+
+  <!-- Student List -->
+  <table class="table table-striped my-4">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Student ID</th>
+      <th>Name</th>
+      <th>Father Name</th>
+      <th>Gender</th>
+      <th>Mobile</th>
+      <th>Education Qua</th>
+      <th>Religion</th>
+      <th>Age</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of studentList">
+      <td>{{ student.id }}</td>
+      <td>{{ student.studentId }}</td>
+      <td>{{ student.studentName }}</td>
+      <td>{{ student.fatherName}}</td>
+      <td>{{ student.gender}}</td>
+      <td>{{ student.mobile}}</td>
+      <td>{{ student.educationalQu}}</td>
+      <td>{{ student.religion}}</td>
+      <td>{{ student.age }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm "
+          (click)="editStudent(student)"
+        >
+          <i class="glyphicon glyphicon-pencil"></i>
+          Edit
+        </button>
+        <button
+          class="btn btn-danger btn-sm"
+          (click)="deleteStudent(student.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
